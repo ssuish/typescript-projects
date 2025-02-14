@@ -1,32 +1,32 @@
 import styles from "./Keyboard.module.css";
 
 const KEYS = [
-  "a",
-  "b",
-  "c",
-  "d",
+  "q",
+  "w",
   "e",
+  "r",
+  "t",
+  "y",
+  "u",
+  "i",
+  "o",
+  "p",
+  "a",
+  "s",
+  "d",
   "f",
   "g",
   "h",
-  "i",
   "j",
   "k",
   "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
   "z",
+  "x",
+  "c",
+  "v",
+  "b",
+  "n",
+  "m",
 ];
 
 type KeyboardProps = {
@@ -46,7 +46,7 @@ export function Keyboard({
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
+        gridTemplateColumns: "repeat(10, 1fr)",
         gap: ".5rem",
       }}
     >
@@ -59,7 +59,7 @@ export function Keyboard({
             className={`${styles.btn} ${isActive ? styles.active : ""}
             ${isInActive ? styles.inactive : ""}`}
             disabled={isActive || isInActive || isDisabled}
-            key="{key}"
+            key={key}
           >
             {key}
           </button>
