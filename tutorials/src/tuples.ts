@@ -12,7 +12,7 @@ function add3DCoordinate(
 console.log(add3DCoordinate([0, 100, 0], [10, 20, 30])); // Log the result of adding two 3D coordinates
 
 // Function to create a simple string state with getter and setter
-function simpleStringState(
+function simpleStringStateTuple(
   initial: string
 ): [() => string, (v: string) => void] {
   let str: string = initial; // Initialize the string state
@@ -24,7 +24,7 @@ function simpleStringState(
   ];
 }
 
-const [strGetter, strSetter] = simpleStringState("hello"); // Initialize the state with "hello"
+const [strGetter, strSetter] = simpleStringStateTuple("hello"); // Initialize the state with "hello"
 
 console.log(strGetter()); // Log the current state
 strSetter("goodbye"); // Update the state to "goodbye"
