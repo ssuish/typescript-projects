@@ -1,19 +1,25 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
-  private users: User[] = [{ id: 0, name: 'John Doe' }];
+  private users: User[] = [
+    { id: 0, name: 'John Doe' },
+    { id: 1, name: 'Jane Doe' },
+    { id: 2, name: 'Johnny Doe' }];
 
-  findAll(): User[] {
+  findAll(name?: string): User[] {
+    if (name) {
+      return this.users.filter((user) => user.name?.includes(name));
+    }
     return this.users;
   }
 
   findById(id: number): User {
     const user = this.users.find((user) => user.id === id);
     if (!user) {
-      throw new Error(`User with id ${id} not found`);
+      throw new NotFoundException(`User with id ${id} not found`);
     }
     return user;
   }
